@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+"""
+
+Dummy
+pybot by Alessandro Pira
+
+a dummy pybot that does nothing
+
+"""
+
+
+class bot:
+	size = 15
+	armour = 3
+	maxdamage = 10
+	maxspeed = 1
+	shotpower = 1
+	shotspeed = 3
+	# * 10 in degrees
+	scanradius = 1
+
+	def set_arena_data(self, round_params):
+		pass
+
+	def act(self, data):
+		return (0, 0, 0, [])
+
