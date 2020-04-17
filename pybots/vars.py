@@ -14,7 +14,7 @@ ROUND_DURATION = 1000
 
 # Maximum pybot cost available (pybots with higher cost will not be allowed
 # to play)
-MAX_BOT_COST = 30
+MAX_BOT_COST = 35
 
 # Hit received for generating an exception
 EXCEPTION_COST = 1000
