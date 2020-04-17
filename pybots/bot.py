@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pybots import log, shot, vars, util, mover
+from . import log, shot, vars, util, mover
 
 
 class bot (mover.mover):

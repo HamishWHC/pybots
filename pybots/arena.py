@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pybots import log, util
+from . import log, util
 
 import random
 

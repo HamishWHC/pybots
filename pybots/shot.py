@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pybots import mover
+from . import mover
 
 
 class shot (mover.mover):

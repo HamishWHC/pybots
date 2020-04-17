@@ -4,7 +4,7 @@ import os
 import sys
 import re
 
-from pybots import log, vars
+from . import log, vars
 
 rexp_import1 = re.compile("import\\s*([a-zA-Z0-9]*)[^A-Za-z0-9]", re.I + re.S + re.M)
 rexp_import2 = re.compile("from\\s*([a-zA-Z0-9]*)\\s*import", re.I + re.S + re.M)
@@ -12,7 +12,8 @@ rexp_import2 = re.compile("from\\s*([a-zA-Z0-9]*)\\s*import", re.I + re.S + re.M
 valid_import = [
 	'util',
 	'random',
-	'math'
+	'math',
+	'pybots'
 ]
 
 def readfile(f):
@@ -22,10 +23,7 @@ def readfile(f):
 	return buf
 
 def botdir():
-	if os.name == 'e32':
-		return os.path.join(vars.SYMBIAN_BASE_DIR, vars.BOTDIR)
-	else:
-		return os.path.join(os.path.dirname(sys.argv[0]), vars.BOTDIR)
+	return os.path.join(os.path.dirname(sys.argv[0]), os.path.normpath(vars.BOTDIR))
 
 def getcolor(idx):
 	colors = [

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pybots import arena, log, vars, bot, botloader, tkgui
+from . import arena, log, vars, bot, botloader, tkgui
 import os
 
 ar = None

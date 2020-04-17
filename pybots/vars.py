@@ -20,7 +20,7 @@ MAX_BOT_COST = 30
 EXCEPTION_COST = 1000
 
 # Folder to look for pybot scripts
-BOTDIR = 'bots'
+BOTDIR = 'pybots/bots'
 
 # Verbosity for file and for stdout:
 #  0 - no log
@@ -32,6 +32,3 @@ FILE_VERBOSITY = 2
 
 # Logfile (will be truncated at the beginning of every game)
 LOGFILE = 'run.log'
-
-SYMBIAN_BASE_DIR = 'e:\\Python\\pybots'
-

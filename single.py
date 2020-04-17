@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+
 from pybots import log, runner
 
 w = 400

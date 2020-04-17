@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pybots import util
+from . import util
 
 
 class mover:

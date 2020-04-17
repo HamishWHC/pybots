@@ -2,7 +2,7 @@
 
 import os
 import sys
-from pybots import vars
+from . import vars
 
 header = ""
 
