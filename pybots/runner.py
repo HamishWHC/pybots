@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
-from pybots import arena, log, vars, bot, botloader, symbiangui, tkgui
+from pybots import arena, log, vars, bot, botloader, tkgui
 import os
-
-if os.name == 'e32':
-	import e32
 
 ar = None
 bots = None
@@ -54,15 +51,7 @@ def run_round():
 	gui = None
 
 	if vars.GUI_ENABLED:
-		if os.name == 'e32':
-			gui = symbiangui.gui()
-		else:
-			try:
-				import android
-				import droidgui
-				gui = droidgui.gui()
-			except ImportError:
-				gui = tkgui.gui()
+		gui = tkgui.gui()
 
 	step = 0
 
