@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 
 from . import util
+from .types import Position
 
 
-class mover:
-	def __init__(self, pos, direction, speed):
-		self.old_pos = pos
-		self.pos = pos
-		self.direction = direction
-		self.speed = speed
+class Mover:
+    def __init__(self, pos: Position, direction: float, speed: int) -> None:
+        self.previous_position: Position = pos
+        self.position: Position = pos
+        self.direction: float = direction
+        self.speed: float = speed
 
-	def move(self):
-		self.old_pos = self.pos
-		self.pos = util.newpos(self.pos, self.direction, self.speed)
+    def move(self) -> None:
+        self.previous_position = self.position
+        self.position = util.newpos(self.position, self.direction, self.speed)
 
-	def go_back(self):
-		self.pos = self.old_pos
-
+    def revert_position(self) -> None:
+        self.position = self.previous_position

@@ -10,38 +10,36 @@ Scans randomly
 
 """
 
-
 import random
 from pybots import util
 
 
-class bot:
-	size = 8
-	armour = 0
-	maxdamage = 10
-	maxspeed = 2
-	shotpower = 5
-	shotspeed = 4
-	# * 10 in degrees
-	scanradius = 4
+class Bot:
+    size = 8
+    armour = 0
+    maxdamage = 10
+    maxspeed = 2
+    shotpower = 5
+    shotspeed = 4
+    # * 10 in degrees
+    scanradius = 4
 
-	def __init__(self):
-		self.dir = -1
-		self.lastdmg = 0
+    def __init__(self):
+        self.dir = -1
+        self.lastdmg = 0
 
-	def act(self, data):
-		(name, pos, dmg, scanresult) = data
+    def act(self, data):
+        (name, pos, dmg, scanresult) = data
 
-		scan = random.randint(0,359)
-		shot = [] 
+        scan = random.randint(0, 359)
+        shot = []
 
-		if (self.dir < 0) or (dmg > self.lastdmg):
-			self.dir = random.randint(0,359)
-		self.lastdmg = dmg
+        if (self.dir < 0) or (dmg > self.lastdmg):
+            self.dir = random.randint(0, 359)
+        self.lastdmg = dmg
 
-		if len(scanresult) > 0:
-			sdir = util.get_direction(pos, scanresult[0][1])
-			shot.append((sdir, self.shotspeed, self.shotpower))
+        if len(scanresult) > 0:
+            sdir = util.get_direction(pos, scanresult[0][1])
+            shot.append((sdir, self.shotspeed, self.shotpower))
 
-		return (self.dir, self.maxspeed, scan, shot)
-
+        return (self.dir, self.maxspeed, scan, shot)

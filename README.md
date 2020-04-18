@@ -11,16 +11,16 @@ so no high damage, high armour, high health bots!
 Pybots are written as a single Python class that utilises no outside imports (aside from the math, random and util modules).
 A method on this bot will be called periodically by the game to determine your bots next step.
 
-The game itself consists of an arena of a given width and height and bots are spawned randomly around the map.
+The game itself consists of an arena of a given width and height and bots are spawned randomly around the map_float.
 Each step (or turn) is taken simultaneously, and bots can shoot, move and change their scanner in each turn.
 The scanner is used to determine the location of other bots and target shots.
 Movement and shooting is done by setting an angle and speed (movement speed is variable,
 however shot speed is set once along with damage and other attributes as mentioned above).
 Shots move in a constant direction and at a constant speed. Bots cannot be hit by their own shots.
-Exiting the map will cause a certain amount of damage per step.
+Exiting the map_float will cause a certain amount of damage per step.
 
 # Installing PyBots
-To install PyBots (the engine/game, not one bot!), you will need Python >=3.6 installed (only tested with Python 3.7, please add an issue if anything in 3.6 or 3.8 comes up, it may work in <3.6, but I'm not going to try supporting it).
+To install PyBots (the engine/game, not one bot!), you will need Python >=3.7 installed (only tested with Python 3.7, please add an issue if anything in 3.8 comes up, it may work in <3.6, but I'm not going to try supporting it).
 
 Next, clone or download this repo to a location on your computer. And now PyBots is installed!
 
@@ -102,8 +102,12 @@ FIXME: How to run PyBots
 # Contributing to Development/Roadmap
 I am planning to do some cleanup on this codebase and I will likely change the bot APIs/expected arguments/returns. Please feel free to submit issues and pull requests.
 Initial plans are as follows:
-* Create Abstract Base Class (ABC) for Bot implementations.
+* ~~Create Abstract Base Class (ABC) for Bot implementations.~~
+* ~~Add full type annotations/hints and as PEP8 compliant as possible.~~
 * Create a more robust API for creating rounds and tournaments programmatically (e.g. create a tournament via a web backend or a Teams bot!).
 * Remove reliance on global variables and move towards more logical OOP.
 * Fix spelling errors and make the code more Pythonic (e.g. iterating over a list instead of `range(0, len(list_here))`).
 * Create an interactive prompt for creating matches and tournaments in terminal.
+* Add feedback (custom exceptions and console messages for when your bots dies by error).
+* Make shots that exceed the bot's total shot power overflow and heal the enemy. Just to ~~be annoying~~ encourage checking your shots! This also fixes a bug.
+* Sandbox bot implementations fully using RestrictedPython (or similar) to prevent cheating (or more malicious code).

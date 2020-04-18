@@ -1,17 +1,10 @@
-#!/usr/bin/env python
+from abc import ABC, abstractmethod
+from typing import Tuple, Dict, List
 
-# Valid imp0rts are: util (from pybots) and random, math (from python)
-# trying to load anything else will disable the bot
+from .types import Position, ScanResult, ShotRequest
 
-class Bot:
-    # size must be 5 - 15
-    # armour must be 0 - 3
-    # maxdamage must be 10 - 15
-    # maxspeed must be 1 - 5
-    # shotpower must be 1 - 5
-    # shotspeed must be 3 - 10
-    # scanradius must be 1 - 9
 
+class BotImplementation(ABC):
     # Total bot cost must be <= vars.MAX_BOT_COST and is calculated this way:
     #   every size point less than 15 costs 1 (smaller is more expensive)
     #   every armour point costs 6
@@ -21,25 +14,26 @@ class Bot:
     #   every shotspeed point beyond 3 costs 2
     #   every scanradius point beyond 1 costs 1
 
-    size = 9
-    armour = 1
-    maxdamage = 10
-    maxspeed = 2
-    shotpower = 4
-    shotspeed = 4
-    # * 10 in degrees
-    scanradius = 3
+    size: int  # must be 5 - 15
+    armour: int  # must be 0 - 3
+    maxdamage: int  # must be 10 - 15
+    maxspeed: int  # must be 1 - 5
+    shotpower: int  # must be 1 - 5
+    shotspeed: int  # must be 3 - 10
+    scanradius: int  # must be 1 - 9
 
     # This (if present) will be called once at the beginning of the round
     #  round_params is a dictionary which will contain some round-specific
     #  parameters; actually populated keys are ARENA_W, ARENA_H,
     #  ARENA_WALL_DMG, ROUND_DURATION
-    def set_arena_data(self, round_params):
+    @abstractmethod
+    def set_arena_data(self, round_params: Dict[str, int]) -> None:
         pass
 
     # Return (dir, speed, scan_dir, (shots))
     #  (shots) is a list of (dir, speed, power) tuples
     #  data is (name, pos, damage, scanresult)
     #  scanresult is a list of (name, pos, dir, speed) for all scanned bots
-    def act(self, data):
-        return (0, 0, 0, [])
+    @abstractmethod
+    def act(self, data: Tuple[str, Position, int, List[ScanResult]]) -> Tuple[float, float, float, List[ShotRequest]]:
+        pass
